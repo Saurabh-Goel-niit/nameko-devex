@@ -34,7 +34,7 @@ for service in "${SERVICES[@]}"; do
     cf unbind-service ${bound_app} ${service} &
   done
   wait
-  cf delete-service -f $service &
+#  cf delete-service -f $service &
 done
 rm services.log
 wait

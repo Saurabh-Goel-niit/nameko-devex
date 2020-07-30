@@ -1,9 +1,8 @@
 ---
 defaults: &defaults
   buildpacks:
-    - apt_buildpack
     - python_buildpack
-  memory: 2G
+  memory: 1G
   disk_quota: 4G
   health-check-type: process
   no-route: true
@@ -11,23 +10,22 @@ defaults: &defaults
     - mymq-service
     - mypostgres
     - mymemcached-service
-    - myRabbitmq-service
 
   env:
     APP_ENV: HelloWorld
 
 # Majestic Monolith - All in One
-applications:
-  - name: nex-namekoexample
-    <<: *defaults
-    no-route: false
-    health-check-type: port
-    command: bash ./run.sh gateway.service products.service orders.service
+#applications:
+#  - name: nex-namekoexample
+#    <<: *defaults
+#    no-route: false
+#    health-check-type: port
+#    command: bash ./run.sh gateway.service products.service orders.service
 
 
 
 # Majestic Microservice (need to uncomment above)
-# applications:
+applications:
 #   - name: nex-namekoexample
 #     <<: *defaults
 #     no-route: false
@@ -42,9 +40,9 @@ applications:
 #     memory: 2G
 #     command: bash -x ./run.sh orders.service
 
-#   - name: nex-namekoexample-products
-#     <<: *defaults
-#     no-route: true
-#     health-check-type: process
-#     memory: 128M
-#     command: bash ./run.sh products.service
+   - name: nex-namekoexample-products
+     <<: *defaults
+     no-route: true
+     health-check-type: process
+     memory: 2G
+     command: bash ./run.sh products.service

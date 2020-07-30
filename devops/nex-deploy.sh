@@ -48,9 +48,9 @@ fi
 
 # Creating Backing services (may fail if it is already there)
 echo "Creating backing service for ${PREFIX}-namekoexample"
-cf cs cloudamqp ${PLAN_RABBIT} ${PREFIX}-rabbitmq &
-cf cs elephantsql ${PLAN_POSTGRES} ${PREFIX}-postgres &
-cf cs rediscloud ${PLAN_REDIS} ${PREFIX}-redis &
+# cf cs cloudamqp ${PLAN_RABBIT} ${PREFIX}-rabbitmq &
+# cf cs elephantsql ${PLAN_POSTGRES} ${PREFIX}-postgres &
+# cf cs rediscloud ${PLAN_REDIS} ${PREFIX}-redis &
 wait
 
 # Deploying App(s) in CF
