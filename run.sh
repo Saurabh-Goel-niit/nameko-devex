@@ -16,8 +16,7 @@ if [ -n "${AMQP_URI}" ]; then
 else
 	echo "Using Production Environment Variables in CF.."
 
- echo ${VCAP_SERVICES}
-   
+  
     AMQP_HOST=$(echo ${VCAP_SERVICES} | jq -r '.mq[0].credentials.AMQP_ENDPOINTS')
 AMQP_PWD=$(echo ${VCAP_SERVICES} | jq -r '.mq[0].credentials.ACTIVE_MQ_PASSWORD')
 AMQP_USER=$(echo ${VCAP_SERVICES} | jq -r '.mq[0].credentials.ACTIVE_MQ_USERNAME')
@@ -39,9 +38,9 @@ POSTGRES_URI=postgres://${POSTGRES_USER}:${POSTGRES_PWD}@${POSTGRES_HOST}:${POST
 #    REDIS_PWD=$(echo ${VCAP_SERVICES} | jq -r '.elasticache[0].credentials.DB_PASSWORD')
     REDIS_URI=${REDIS_HOST}:${REDIS_PORT}
 
-    echo AMQP = $AMQP_URI 
-    echo POSTGRES = $POSTGRES_URI 
-    echo REDIS = $REDIS_URI
+#    echo AMQP = $AMQP_URI 
+#    echo POSTGRES = $POSTGRES_URI 
+#    echo REDIS = $REDIS_URI
 
     export AMQP_URI POSTGRES_URI REDIS_URI
 fi
